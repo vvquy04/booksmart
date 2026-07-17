@@ -10,185 +10,305 @@ Reviewer: ChatGPT (Tech Lead)
 
 ---
 
-# 1. User Roles
+# 1. Purpose
 
-The system supports three primary roles:
+This document describes all functional requirements of the BookSmart platform.
+
+---
+
+# 2. User Roles
+
+The platform supports four roles.
 
 - Customer
 - Business Owner
-- System Administrator
+- Employee
+- Administrator
 
 ---
 
-# 2. Customer Functional Requirements
+# 3. Customer Functional Requirements
 
 ## Authentication
 
-- Register
+- Register account
 - Login
 - Logout
-- Forgot Password
-- Reset Password
+- Reset password
+- Refresh access token
+
+---
 
 ## Profile
 
-- View Profile
-- Update Profile
-- Change Password
-- Upload Avatar
+- View profile
+- Update profile
+- Change password
+- Upload avatar
+
+---
 
 ## Business Discovery
 
-- Search Businesses
-- Filter Businesses
-- View Business Details
-- View Branches
-- View Services
-- View Reviews
+- Search businesses
+- Search branches
+- Search services
+- Filter by category
+- Filter by rating
+- Filter by distance
+
+---
 
 ## AI Recommendation
 
-- Get Recommended Businesses
-- Get Recommended Services
-- Get Recommended Employees
+- Recommend businesses
+- Recommend services
+- Recommend employees
+
+---
 
 ## Booking
 
-- Create Booking
-- View Booking Details
-- Cancel Booking
-- Reschedule Booking
-- Check-in
+- Create booking
+- Select branch
+- Select multiple services
+- Select employee (optional)
+- View booking
+- Cancel booking
+- Reschedule booking
+- View booking history
+
+---
+
+## Check-in
+
+- Online check-in
+- Upload check-in image
+
+---
 
 ## Payment
 
-- Pay Online
-- View Payment History
+- Online payment
+- View payment history
 
-## Favorite
-
-- Add Favorite Business
-- Remove Favorite Business
+---
 
 ## Review
 
-- Review Business
-- Review Service
-- Review Employee
+- Review business
+- Review employee
+- Review service
+
+---
+
+## Favorite
+
+- Save favorite businesses
+- Remove favorite businesses
+
+---
 
 ## Notification
 
-- Receive Notifications
-- View Notification History
+- Receive notifications
+- View notification history
 
 ---
 
-# 3. Business Owner Functional Requirements
+# 4. Business Owner Functional Requirements
 
 ## Business Management
 
-- Create Business
-- Update Business
-- Manage Branches
-- Upload Business Images
+- Create business
+- Update business
+- Delete business
+- Upload business images
 
-## Service Management
+---
 
-- Create Service
-- Update Service
-- Delete Service
-- Configure Price
-- Configure Duration
+## Branch Management
+
+- Create branch
+- Update branch
+- Delete branch
+
+---
 
 ## Employee Management
 
-- Add Employee
-- Update Employee
-- Assign Services
-- Manage Working Hours
+- Create employee account
+- Update employee
+- Delete employee
+- Assign services
+
+---
+
+## Service Management
+
+- Create categories
+- Create services
+- Update services
+- Delete services
+
+---
+
+## Working Hours
+
+- Configure working hours
+- Configure time slots
+
+---
 
 ## Booking Management
 
-- View Bookings
-- Confirm Booking
-- Reject Booking
-- Manage Booking Status
+- View bookings
+- Confirm bookings
+- Reject bookings
+- Complete bookings
+- Mark no-show
+
+---
 
 ## Payment Management
 
-- Configure Payment Policy
-- View Transactions
+- Configure payment policy
+- Configure cancellation policy
+- Configure refund policy
 
-## Business Configuration
-
-- Configure Auto Confirmation
-- Configure Cancellation Policy
-- Configure Refund Policy
+---
 
 ## Dashboard
 
-- Revenue Statistics
-- Booking Statistics
-- Customer Statistics
+- Revenue statistics
+- Booking statistics
+- Employee statistics
+- Customer statistics
 
 ---
 
-# 4. System Administrator Functional Requirements
+# 5. Employee Functional Requirements
 
-- Manage Users
-- Manage Businesses
-- Verify Businesses
-- Handle Reports
-- Monitor Platform
+## Authentication
+
+- Login
+- Logout
 
 ---
 
-# 5. Business Rules
+## Booking
 
-BR-001
-A Business Owner can own multiple Businesses.
+- View assigned bookings
+- Update booking progress
+- Check in customers
+- Complete services
 
-BR-002
-A Business can have multiple Branches.
+---
 
-BR-003
-Customers book Services and may optionally choose an Employee.
+## Schedule
 
-BR-004
-Each Business defines its own Payment Policy.
+- View work schedule
+- View assigned services
 
-BR-005
-Each Business manages its own Services.
+---
 
-BR-006
-Employees and Services have a many-to-many relationship.
+# 6. Administrator Functional Requirements
 
-BR-007
-Each Branch defines its own Working Hours.
+- Verify businesses
+- Manage users
+- Suspend businesses
+- View reports
+- Monitor platform
 
-BR-008
-Each Employee belongs to one Branch.
+---
 
-BR-009
-Each Business defines the price and duration of its Services.
+# 7. Functional Modules
 
-BR-010
-Each Business can enable or disable automatic Booking confirmation.
+Authentication
 
-BR-011
-Each Business defines its own Cancellation and Refund Policy.
+- Register
+- Login
+- Refresh Token
+- Authorization
 
-BR-012
-Customers can review Businesses, Services, and Employees after completing a Booking.
+---
 
-BR-013
-The system supports the "No Show" Booking status.
+Business
 
-BR-014
-The system uses a unified User table with Role-based authorization.
+- Business
+- Branch
+- Employee
+- Service
+- Service Category
 
-BR-015
-Roles are managed in a separate Role table.
+---
 
-BR-016
-Bookings are created based on predefined Time Slots.
+Booking
+
+- Booking
+- Booking Item
+- Check-in
+
+---
+
+Payment
+
+- Payment
+- Transaction
+
+---
+
+Review
+
+- Review
+
+---
+
+Notification
+
+- Notification
+
+---
+
+AI
+
+- Recommendation
+
+---
+
+# 8. Business Constraints
+
+- One Business Owner can own multiple Businesses.
+- One Business can have multiple Branches.
+- One Branch manages multiple Employees.
+- One Business provides multiple Services.
+- Employees can perform multiple Services.
+- Customers can book multiple Services in one Booking.
+- Business Owners create Employee accounts.
+- Businesses must be verified before accepting bookings.
+- Customers can only review completed bookings.
+- Every booking belongs to exactly one branch.
+- Every payment belongs to exactly one booking.
+
+---
+
+# 9. Out of Scope (Version 1.0)
+
+The following features are excluded from Version 1.0.
+
+- Membership
+- Voucher
+- Promotion
+- Loyalty Point
+- Chat
+- Inventory
+- Multi-language
+- Multi-tenant
+- Email Marketing
+- SMS Marketing
+
+---
+
+# 10. Summary
+
+The functional requirements defined in this document serve as the foundation for database design, API specification, backend implementation and testing.
