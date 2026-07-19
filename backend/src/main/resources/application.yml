@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: booksmart-backend
+
+  profiles:
+    active: local
